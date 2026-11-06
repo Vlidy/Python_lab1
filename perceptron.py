@@ -14,7 +14,7 @@ class Perceptron:
         self.lr = learning_rate
         self.epochs = epochs
         self.n = n_features
-        self.wight: list[float] = [0.0 for x in range(n_features)]
+        self.wight: list[float] = [0.0 for _ in range(n_features)]
         self.bias: float = 0.0
         self.list_error: list[int] = []
 
@@ -80,7 +80,7 @@ def load_iris_points() -> tuple[list[list[float]], list[int]]:
 
 def built_graphs(X: list[list[float]], y: list[int], my_per: Perceptron) -> None:
     """Plot the decision boundary (left) and errors per epoch (right)."""
-    win, (left_gr, r_gr) = plt.subplots(1, 2, figsize=(12, 5))
+    _, (left_gr, r_gr) = plt.subplots(1, 2, figsize=(12, 5))
     left_gr.set_title("Граница решения")
     point_x = [p[0] for p in X]
     point_y = [p[1] for p in X]
