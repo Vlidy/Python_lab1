@@ -114,7 +114,12 @@ def main() -> None:
     parser.add_argument("--samples", type=int, default=200)
     parser.add_argument("--lr", type=float, default=0.1)
     parser.add_argument("--epochs", type=int, default=50)
+    parser.add_argument("--dataset", type=str, default="synthetic", choices=["synthetic", "iris"])
     args = parser.parse_args()
+    if args.dataset == "iris":
+        X_data, y_data = load_iris_points()
+    else:
+        X_data, y_data = generate_points(args.samples)
     if args.samples < 2:
         parser.error("--samples должно быть не меньше 2")
     if args.epochs < 1:
